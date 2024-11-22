@@ -10,7 +10,7 @@ RUN apk --no-interactive add advancecomp binutils bison ca-certificates flex fon
 ARG GIT_URL="https://github.com/crawl/crawl.git"
 ARG GIT_BRANCH="master"
 ARG GIT_REF="HEAD"
-RUN git clone -b ${GIT_BRANCH} ${GIT_URL} /opt/crawl
+RUN git clone -v -b ${GIT_BRANCH} ${GIT_URL} /opt/crawl
 WORKDIR /opt/crawl/crawl-ref/source
 RUN git checkout ${GIT_REF}
 COPY musl-compat.patch /tmp/musl-compat.patch
