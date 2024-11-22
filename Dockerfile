@@ -21,7 +21,7 @@ RUN rm -Rf /opt/crawl/.git
 
 FROM base AS runtime
 RUN apk --no-interactive add tini ncurses-libs sqlite-libs lua5.1-libs python3 py3-yaml py3-tornado
-COPY --from=BUILD /opt/crawl /opt/crawl
+COPY --from=build /opt/crawl /opt/crawl
 VOLUME /opt/crawl/crawl-ref/source/webserver
 VOLUME /opt/crawl/crawl-ref/source/rcs
 WORKDIR /opt/crawl/crawl-ref/source
