@@ -1,0 +1,18 @@
+from (closed) PR: https://github.com/crawl/crawl/pull/1151
+https://github.com/crawl/crawl/pull/1151/commits/17844727410be6fc8dd6258b0868848569472a4f
+
+diff --git a/crawl-ref/source/crash.cc b/crawl-ref/source/crash.cc
+index 76a5fc68b6..368d8e15fa 100644
+--- a/crawl-ref/source/crash.cc
++++ b/crawl-ref/source/crash.cc
+@@ -7,7 +7,9 @@
+ 
+ #include "crash.h"
+ 
+-#if defined(UNIX)
++// musl doesn't suport execinfo.h and doesn't provide a clean way to detect it,
++// so assume any non-glibc Linux system is using it.
++#if defined(UNIX) && (!defined(TARGET_OS_LINUX) || defined(_GLIBC_))
+ #include <unistd.h>
+ #include <sys/param.h>
+ #ifndef __HAIKU__
