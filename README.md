@@ -13,7 +13,7 @@ Note that you *must* allow the `webserver` volume to be populated, [it should lo
 
 Here's an example invocation:
 
-    # podman build -t craw-web --build-arg GIT_BRANCH=stone_soup-0.32 . 
+    # podman build -t crawl-web --build-arg GIT_BRANCH=stone_soup-0.32 . 
     podman run --rm -it -p 127.0.0.1:8080:8080 \
       -v crawl-webserver:/opt/crawl/crawl-ref/source/webserver:rw \
       -v crawl-rcs:/opt/crawl/crawl-ref/source/rcs:rw \
