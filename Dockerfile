@@ -15,7 +15,7 @@ WORKDIR /opt/crawl/crawl-ref/source
 RUN git checkout "${GIT_REF}"
 COPY musl-compat.patch /tmp/musl-compat.patch
 RUN git apply /tmp/musl-compat.patch
-RUN make -j$(nproc) LTO=y WEBTILES=y
+RUN make -j$(nproc) LTO=y WEBTILES=y STRIP=/bin/true
 RUN rm -Rf /opt/crawl/.git
 
 FROM base AS runtime
